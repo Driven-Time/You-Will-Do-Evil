@@ -1,0 +1,159 @@
+fileFormatVersion: 2
+guid: a4f2a31309a8704429361d7539739e78
+timeCreated: 1502229142
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Bridge
+    100002: Ground
+    100004: //RootNode
+    100006: House
+    100008: Player
+    100010: Wall
+    100012: Bed
+    100014: Book
+    100016: BookShelf
+    100018: Chair
+    100020: Chandeler
+    100022: MedicineCabinet
+    100024: Table
+    100026: TreeTop
+    100028: Water
+    100030: Bridge.001
+    400000: Bridge
+    400002: Ground
+    400004: //RootNode
+    400006: House
+    400008: Player
+    400010: Wall
+    400012: Bed
+    400014: Book
+    400016: BookShelf
+    400018: Chair
+    400020: Chandeler
+    400022: MedicineCabinet
+    400024: Table
+    400026: TreeTop
+    400028: Water
+    400030: Bridge.001
+    2300000: Bridge
+    2300002: Ground
+    2300004: House
+    2300006: Player
+    2300008: Wall
+    2300010: Bed
+    2300012: Book
+    2300014: BookShelf
+    2300016: Chair
+    2300018: Chandeler
+    2300020: MedicineCabinet
+    2300022: Table
+    2300024: TreeTop
+    2300026: Water
+    2300028: Bridge.001
+    3300000: Bridge
+    3300002: Ground
+    3300004: House
+    3300006: Player
+    3300008: Wall
+    3300010: Bed
+    3300012: Book
+    3300014: BookShelf
+    3300016: Chair
+    3300018: Chandeler
+    3300020: MedicineCabinet
+    3300022: Table
+    3300024: TreeTop
+    3300026: Water
+    3300028: Bridge.001
+    4300000: Bridge
+    4300002: Wall
+    4300004: House
+    4300006: Player
+    4300008: Ground
+    4300010: Table
+    4300012: Chair
+    4300014: Bed
+    4300016: Chandeler
+    4300018: MedicineCabinet
+    4300020: TreeTop
+    4300022: BookShelf
+    4300024: Book
+    4300026: Water
+    4300028: Bridge.001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
