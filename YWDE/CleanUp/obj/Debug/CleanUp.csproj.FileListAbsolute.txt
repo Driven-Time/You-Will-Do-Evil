@@ -1,0 +1,6 @@
+E:\YWDERoot\You-Will-Do-Evil\YWDE\CleanUp\bin\Debug\CleanUp.exe.config
+E:\YWDERoot\You-Will-Do-Evil\YWDE\CleanUp\bin\Debug\CleanUp.exe
+E:\YWDERoot\You-Will-Do-Evil\YWDE\CleanUp\bin\Debug\CleanUp.pdb
+E:\YWDERoot\You-Will-Do-Evil\YWDE\CleanUp\obj\Debug\CleanUp.csprojResolveAssemblyReference.cache
+E:\YWDERoot\You-Will-Do-Evil\YWDE\CleanUp\obj\Debug\CleanUp.exe
+E:\YWDERoot\You-Will-Do-Evil\YWDE\CleanUp\obj\Debug\CleanUp.pdb

@@ -232,8 +232,8 @@ public class NPC : ScriptableObject{
         {
             Destroy (Object);
             CurrentHealth = MaxHealth;
-            Debug.Log (Object.name.Remove (Object.name.IndexOf ("("), 5));
-            God.Instance.Respawn (Object.name.Remove(Object.name.IndexOf("("), 5));
+            Debug.Log (Object.name.Remove (Object.name.IndexOf ("("), Object.name.Length - (Object.name.IndexOf ("("))));
+            God.Instance.Respawn (Object.name.Remove(Object.name.IndexOf("("), Object.name.Length - (Object.name.IndexOf ("("))));
         }
 
     }

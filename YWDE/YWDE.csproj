@@ -234,6 +234,8 @@
     <Compile Include="Assets\Arcive\Scripts\Libraries\UI.cs" />
     <Compile Include="Assets\Scripts\Characters\Character.cs" />
     <Compile Include="Assets\Scripts\Characters\NPC.cs" />
+    <Compile Include="Assets\Scripts\CheckerBrain.cs" />
+    <Compile Include="Assets\Scripts\Config.cs" />
     <Compile Include="Assets\Scripts\Doll.cs" />
     <Compile Include="Assets\Scripts\God.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
