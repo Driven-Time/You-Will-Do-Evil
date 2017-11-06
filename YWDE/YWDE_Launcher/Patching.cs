@@ -103,7 +103,7 @@ namespace YWDE_Launcher
 
             if (stream.IsCompleted)
             {
-                MessageBox.Show ($"Downloaded {path} with succes");
+                MessageBox.Show ($"Downloaded {path} with success");
             }
 
 
