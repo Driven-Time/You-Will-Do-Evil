@@ -1,0 +1,35 @@
+# YOU WILL DO EVIL PUBLIC LICENSE
+
+> Version 1.0, November 2017
+
+> Copyright (C) 2017, Driven time
+
+
+Everyone is permitted to use but not distrubute or alter the contents of "You Will Do Evil".
+This includes if the name is changed in any way.
+The said authors of this product claim full ownership of everything included in the installation,
+with exception of the installer itself.
+The authors my change the content of this document at any time.
+
+
+>YOU WILL DO EVIL PUBLIC LICENSE
+> TERMS AND CONDITIONS FOR USE OF THIS PRODUCT
+
+1 - Driven time is not to be held responsable for any damage caused by this product.
+	
+	This includes - but is not limited to - the following instances
+
+1.1 - Any problems accuring during the use of this product is considered as "User responsibility". You may howver seek help with any issues related to the product trough the companie's website (https://zhakalendk.github.io/)
+
+1.2 - Faulty installment.
+
+1.3 - Hardware limitations
+
+2 - The use of this product is only permitted through formel agreement with the authors.
+	
+	This includes - but is not limited to - the following instances
+
+2.1 - Formel agreement trough text
+2.2 - Formel link to download source.
+
+3 - The product is delivered with no warrenty in any form.

@@ -12,7 +12,7 @@ namespace YWDE_Launcher
 {
     class Launcher
     {
-        public const string Version = "1.2.1.1";
+        public const string Version = "1.2.3.1";
         public const string ClientVersion = "1.4.2.0";
         /// <summary>
         /// Launches the provided Executable file

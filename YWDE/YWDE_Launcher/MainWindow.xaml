@@ -54,7 +54,7 @@
                 <DropShadowEffect Direction="-2" Opacity="0"/>
             </Button.Effect>
         </Button>
-        <CheckBox x:Name="closeOnLaunch" Content="Close on Launch" Margin="0,0,127,23" Foreground="#FF09B800" Height="16" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="103" FontStyle="Italic" Grid.Column="2"/>
+        <CheckBox x:Name="closeOnLaunch" Content="Close on Launch" Margin="103,0,0,14" Foreground="#FF09B800" Height="16" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="103" FontStyle="Italic" Grid.Column="2"/>
         <Label x:Name="LauncherVersion" Content="1.0.0.0" HorizontalAlignment="Left" Margin="102,0,0,19" VerticalAlignment="Bottom" Foreground="#FFFFB900" FontSize="10"/>
         <Label x:Name="ClientVersion" Content="1.4.1.0" HorizontalAlignment="Left" Margin="85,0,0,1" VerticalAlignment="Bottom" Foreground="#FFFFB900" FontSize="10"/>
 

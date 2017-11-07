@@ -10,6 +10,7 @@ namespace CleanUp
 {
     class Program
     {
+        const string VERSION = "1.0.1.0";
         static void Main (string[] args)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo ();
@@ -17,7 +18,6 @@ namespace CleanUp
             startInfo.Verb = "runas";
 
             FileManagement.DeleteFiles ("");
-            Console.ReadKey ();
         }
     }
 }

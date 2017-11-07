@@ -27,12 +27,12 @@ namespace YWDE_Launcher
             ProcessStartInfo startInfo = new ProcessStartInfo ();
             startInfo.UseShellExecute = true;
             startInfo.Verb = "runas";
-            Patching.Update ();
-            Patching.DeleteFiles ("Temp");
             LauncherVersion.Content = Launcher.Version;
             ClientVersion.Content = Launcher.ClientVersion;
             char[] Key = new char[] { 'C', 'O', 'L', ':' };
             closeOnLaunch.IsChecked = Launcher.LoadSettings (Key);
+            Patching.Update ();
+            Patching.DeleteFiles ("Temp");
         }
 
         private void LaunchButton_Click (object sender, RoutedEventArgs e)

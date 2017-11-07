@@ -26,11 +26,9 @@ namespace YWDE_Launcher
         {
             if (!VersionCheck())
             {
-                MessageBox.Show ("There's an Update available. Click OK to proceed (This might take a little while)");
+                MessageBox.Show ("There's an Update available. Please relaunch the application after installation. Click OK to proceed (This might take a little while)");
                 Download ("https://drive.google.com/uc?export=download&id=0BzsykeCvI9XgZzFPZ1B3MWtqY0k", "YWDE.exe");
-                MessageBox.Show ("Please relaunch the application after installation");
                 Process.Start ($"{AppDomain.CurrentDomain.BaseDirectory}/Temp/YWDE.exe");
-                /*DO NOT DELETE FILES! LAUNCH THE UNINSTALLER!*/
 
                 Process.Start ("CleanUp.exe");
                 Environment.Exit (0);
@@ -45,11 +43,11 @@ namespace YWDE_Launcher
         public static bool VersionCheck ()
         {
             Download ("https://drive.google.com/uc?export=download&id=1VTPnslFXPYTTKt0jJbq2JRh2Kx8Cxm4t", "Version.txt");
-            string version = Launcher.ReadAndReturn ($"{AppDomain.CurrentDomain.BaseDirectory}Temp/Version.txt");
+            string RemoteClientversion = Launcher.ReadAndReturn ($"{AppDomain.CurrentDomain.BaseDirectory}Temp/Version.txt");
 
-            MessageBox.Show ($"Local client version: {Launcher.ClientVersion} <|> Remote client version: {version}");
+            //MessageBox.Show ($"Local client version: {Launcher.ClientVersion} <|> Remote client version: {version}"); /*Put this into Launcher UI*/
 
-            if (ConvertToInt(Launcher.ClientVersion) < ConvertToInt(version))
+            if (ConvertToInt(Launcher.ClientVersion) < ConvertToInt(RemoteClientversion))
             {
                 return false;
             }
@@ -103,7 +101,7 @@ namespace YWDE_Launcher
 
             if (stream.IsCompleted)
             {
-                MessageBox.Show ($"Downloaded {path} with success");
+                //MessageBox.Show ($"Downloaded {path} with success");
             }
 
 
@@ -125,7 +123,7 @@ namespace YWDE_Launcher
             foreach (FileInfo file in fileList)
             {
                 file.Delete ();
-                MessageBox.Show ($"Deleted: {file.Name}");
+                //MessageBox.Show ($"Deleted: {file.Name}");
             }
 
             
