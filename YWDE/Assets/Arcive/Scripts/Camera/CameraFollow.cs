@@ -11,55 +11,55 @@ public class CameraFollow : MonoBehaviour
     #region Variables
     [Header ("Follow")]
     [Tooltip ("The GameObject to Follow")]
-    public Transform Target;
+    public Transform target;
     [Tooltip ("The distance on each axis from the GameObject to follow")]
-    public Vector3 Offset;  //  The Distance to Target
+    public Vector3 offset;  //  The Distance to Target
     [Tooltip ("The speed of the Camera while moving")]
-    public float Speed;
+    public float speed;
 
    
     [Header ("Rotation")]
     [Tooltip ("The speed of the Camera While turning")]
-    public float TurnSpeed;
+    public float turnSpeed;
     [Tooltip ("The angle the Camera should turn to")]
-    public float TurnAngle; //  HOw far the Camera will turn
+    public float turnAngle; //  HOw far the Camera will turn
 	#endregion
 
 	#region BuildIn Methods
 	void Start ()
 	{
 
-        Target = GameObject.Find ("Player").transform;
-	
+        if (GameObject.Find ("Sarenn"))
+        {
+            target = GameObject.Find ("Sarenn").transform;
+        }
 	}
-
-	
 
 	void FixedUpdate ()
 	{
         #region Turning
-        float Horizontal = Input.GetAxis ("Horizontal");    //  Getting the Axis
+        float horizontal = Input.GetAxis ("Horizontal");    //  Getting the Axis
 
         /*Deciding which direction to turn and then turn*/
-        if (Horizontal > 0)    //   Right
+        if (horizontal > 0)    //   Right
         {
-            Turn (TurnAngle, TurnSpeed);
+            Turn (turnAngle, turnSpeed);
         }
-        else if (Horizontal < 0)  //   Left
+        else if (horizontal < 0)  //   Left
         {
-            Turn (-TurnAngle, TurnSpeed);
+            Turn (-turnAngle, turnSpeed);
         }
 
         /*Normalize*/
         else
         {
-            Turn (0, TurnSpeed);
+            Turn (0, turnSpeed);
         }
         #endregion
 
         #region Movement
-        Vector3 Follow = Target.position + Offset;  //  Target
-        transform.position = Vector3.Slerp (transform.position, Follow, Speed); //  Delaying Camera movement
+        Vector3 follow = target.position + offset;  //  Target
+        transform.position = Vector3.Slerp (transform.position, follow, speed); //  Delaying Camera movement
         #endregion
 
     }
@@ -73,8 +73,8 @@ public class CameraFollow : MonoBehaviour
     /// <param name="Speed"></param>
     private void Turn (float Direction, float Speed)
     {
-        Quaternion TurnTo = Quaternion.Euler (8, Direction, 0);
-        transform.rotation = Quaternion.Slerp (transform.rotation, TurnTo, Speed * Time.deltaTime);
+        Quaternion turnTo = Quaternion.Euler (8, Direction, 0);
+        transform.rotation = Quaternion.Slerp (transform.rotation, turnTo, Speed * Time.deltaTime);
     }
 	#endregion
 

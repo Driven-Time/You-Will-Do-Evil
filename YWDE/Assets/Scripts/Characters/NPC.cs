@@ -26,80 +26,80 @@ public class NPC : ScriptableObject{
     /// </summary>
     [Header ("Movement")]
     [Tooltip ("Should be set to true if the object should turn instantly while moving")]
-    public bool InstantTurn = false;
+    public bool instantTurn = false;
     /// <summary>
     /// The amount of force applied to the rigid body when moving
     /// </summary>
     [Tooltip ("The amount of force applied to the Rigidbody when moving")]
-    public float MoveForce;
-    private float _MoveForce;   //  Used to calculate the current force applied to the Rigidbody
+    public float moveForce;
+    private float internalMoveForce;   //  Used to calculate the current force applied to the Rigidbody
     /// <summary>
     /// The amount 'MoveForce' is multiplied with when sprinting [1, 10]
     /// </summary>
     [Tooltip ("The amount of force the speed is multiplied with when sprinting [1, 10]")]
     [Range(1, 10)]
-    public float SprintMultiplier;
+    public float sprintMultiplier;
     /// <summary>
     /// True if the NPC is Sprinting
     /// </summary>
     [Tooltip ("True if the NPC is sprinting")]
-    public bool IsSprinting = false;
+    public bool isSprinting = false;
     /// <summary>
     /// True if the Object is waiting to move (Should be set to false the first frame this Object is activated)
     /// </summary>
     [Tooltip ("If false this NPC will move around in a random pattern")]
-    public bool WaitFlag;
+    public bool waitFlag;
 
     /// <summary>
     /// Should be set to true if the Detected Object is in Range
     /// </summary>
     [Header ("Attack")]
-    public bool InRange;
+    public bool inRange;
     /// <summary>
     /// True if the NPC is attacking (Should be set to false the first frame this Object is Activated)
     /// </summary>
-    public bool Attacking;
+    public bool attacking;
 
     /// <summary>
     /// The maximum amount of health this NPC has
     /// </summary>
     [Header ("Attributes")]
     [Tooltip ("The maximum amount of health the NPC has")]
-    public float MaxHealth;
+    public float maxHealth;
     /// <summary>
     /// The amount of health this NPC currently has
     /// </summary>
     [Tooltip ("The current amount of health the NPC has")]
-    public float CurrentHealth;
+    public float currentHealth;
     /// <summary>
     /// The amount of Stamina this NPC has
     /// </summary>
     [Tooltip ("The amount of stamina the NPC has")]
-    public float Stamina;
+    public float stamina;
     /// <summary>
     /// The amount of Damage this NPC Inflicts when attacking
     /// </summary>
     [Tooltip ("The amount of damage the NPC does")]
-    public float Damage;
+    public float damage;
 
     /// <summary>
     /// Wether this NPC is friendly or not
     /// </summary>
     [Header ("Behavior")]
     [Tooltip ("Should be set to true if this NPC is is friendly (False = Aggresive)")]
-    public bool Friendly = false;
+    public bool friendly = false;
 
     /// <summary>
     /// The color of the material attached to (NOTE: Do not use the Standard material)
     /// </summary>
     [Header ("Material")]
     [Tooltip ("The color of the material attached to this Object")]
-    public Color MaterialColor;
+    public Color materialColor;
     /// <summary>
     /// The Color the Material should transist to
     /// </summary>
     [Tooltip ("The Color to transition to")]
-    public Color ChangeToColor;
+    public Color changeToColor;
     /// <summary>
     /// 0 = 'MaterialColor', 1 = 'ChangeToColor' [0, 1]
     /// </summary>
@@ -107,22 +107,22 @@ public class NPC : ScriptableObject{
     {
         get
         {
-            return ColorTransitionValue;
+            return colorTransitionValue;
         }
 
         set
         {
             if (value < 0)
             {
-                ColorTransitionValue = 0;
+                colorTransitionValue = 0;
             }
             else if (value > 1)
             {
-                ColorTransitionValue = 1;
+                colorTransitionValue = 1;
             }
             else
             {
-                ColorTransitionValue = value;
+                colorTransitionValue = value;
             }
 
         }
@@ -130,7 +130,7 @@ public class NPC : ScriptableObject{
     [Tooltip ("Used to transition from one color to another. 0 = 'MaterialColor', 1 = 'ChangeToColor' [0, 1]")]
     [SerializeField]
     [Range (0, 1)]
-    private float ColorTransitionValue;
+    private float colorTransitionValue;
 
     #endregion
 
@@ -138,12 +138,12 @@ public class NPC : ScriptableObject{
 
     public void OnEnable ()
     {
-        Debug.Log ("NPC Character created: \n<<" + this.name + ">>\nHealth: " + this.CurrentHealth + ",\nStamina: " + this.Stamina + ",\nDamage: " + this.Damage);
+        Debug.Log ("NPC Character created: \n<<" + this.name + ">>\nHealth: " + this.currentHealth + ",\nStamina: " + this.stamina + ",\nDamage: " + this.damage);
     }
 
     public void OnDestroy ()
     {
-        Debug.Log ("Death of NPC: <<" + this.name +">>");
+        Debug.LogError ("Death of NPC: <<" + this.name +">>");
     }
 
     #endregion
@@ -152,33 +152,32 @@ public class NPC : ScriptableObject{
     /// <summary>
     /// Movement of the Rigidbody
     /// </summary>
-    /// <param name="Rigid">Rigidbody of the Object</param>
-    public void Movement (ref Rigidbody Rigid)
+    /// <param name="_rigid">Rigidbody of the Object</param>
+    public void Movement (ref Rigidbody _rigid)
     {
         //  Changes Direction if no 'Ground' is found
-        if (InstantTurn)
+        if (instantTurn)
         {
-            MoveForce *= -1;
-            _MoveForce = MoveForce;
+            moveForce *= -1;
+            internalMoveForce = moveForce;
         }
-        Vector3 MoveVector = Vector3.left * _MoveForce;
+        Vector3 moveVector = Vector3.left * internalMoveForce;
 
-        Rigid.velocity = MoveVector * Time.deltaTime;
+        _rigid.velocity = moveVector * Time.deltaTime;
     }
-
 
     /// <summary>
     /// Creates a Rigidbody at runtime
     /// </summary>
-    /// <param name="Object">The Object the Rigidbody should be attached to</param>
+    /// <param name="_object">The Object the Rigidbody should be attached to</param>
     /// <returns></returns>
-    public Rigidbody CreateRigidBody (GameObject Object)
+    public Rigidbody CreateRigidBody (GameObject _object)
     {
         Debug.Log ("<<" + this.name + ">>" + " Does not have a Rigidbody. Component created Automaticly");
-        Rigidbody Rigid = Object.AddComponent<Rigidbody> ();
-        Rigid.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        Rigidbody rigid = _object.AddComponent<Rigidbody> ();
+        rigid.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
-        return Rigid;
+        return rigid;
     }
 
     /// <summary>
@@ -187,53 +186,53 @@ public class NPC : ScriptableObject{
     /// <returns></returns>
     public IEnumerator RandomMove ()
     {
-        WaitFlag = true;
-        _MoveForce = 0;
+        waitFlag = true;
+        internalMoveForce = 0;
         yield return new WaitForSeconds (Random.Range (1, 5));
         #region Change Direction
         float Num = Random.Range (0, 1f);
         if (Num < 0.5)
         {
-            MoveForce *= -1;
+            moveForce *= -1;
         }
         #endregion
-        _MoveForce = MoveForce;
+        internalMoveForce = moveForce;
         yield return new WaitForSeconds (Random.Range (1, 5));
         
-        WaitFlag = false;
+        waitFlag = false;
     }
 
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="WaitTime">The amount of time the NPC should wait before attacking again</param>
-    /// <param name="Object">The Object this instance is attached to</param>
+    /// <param name="_waitTime">The amount of time the NPC should wait before attacking again</param>
+    /// <param name="_object">The Object this instance is attached to</param>
     /// <returns></returns>
-    public IEnumerator Attack (float WaitTime, GameObject Object)
+    public IEnumerator Attack (float _waitTime, GameObject _object)
     {
-        Attacking = true;
-        while (InRange)
+        attacking = true;
+        while (inRange)
         {
-            Debug.Log ("<<<color=red>" + this.name + "</color>>>" + " is Attacking <<<color=green>" + Object.name + "</color>>>");
-            God.Instance.WriteConsoleLine ("<<<color=red>" + this.name + "</color>>>" + " is Attacking <<<color=green>" + Object.name + "</color>>>");
-            God.Instance.DealDamage (Damage, Object);
-            yield return new WaitForSeconds (WaitTime);
+            //Debug.Log ("<<<color=red>" + this.name + "</color>>>" + " is Attacking <<<color=green>" + Object.name + "</color>>>");
+            //God.Instance.WriteConsoleLine ("<<<color=red>" + this.name + "</color>>>" + " is Attacking <<<color=green>" + Object.name + "</color>>>");
+            God.Instance.DealDamage (damage, _object);
+            yield return new WaitForSeconds (_waitTime);
         }
-        Attacking = false;
+        attacking = false;
     }
 
     /// <summary>
     /// When the NPC dies
     /// </summary>
-    /// <param name="Object"></param>
-    public void Die (GameObject Object)
+    /// <param name="_object"></param>
+    public void Die (GameObject _object)
     {
-        if (CurrentHealth <= 0)
+        if (currentHealth <= 0 || _object.transform.position.y < -5)
         {
-            Destroy (Object);
-            CurrentHealth = MaxHealth;
-            Debug.Log (Object.name.Remove (Object.name.IndexOf ("("), Object.name.Length - (Object.name.IndexOf ("("))));
-            God.Instance.Respawn (Object.name.Remove(Object.name.IndexOf("("), Object.name.Length - (Object.name.IndexOf ("("))));
+            Destroy (_object);
+            currentHealth = maxHealth;
+            Debug.LogError (_object.name.Remove (_object.name.IndexOf ("("), _object.name.Length - (_object.name.IndexOf ("("))));
+            God.Instance.Respawn (_object.name.Remove(_object.name.IndexOf("("), _object.name.Length - (_object.name.IndexOf ("("))));
         }
 
     }
@@ -241,12 +240,12 @@ public class NPC : ScriptableObject{
     /// <summary>
     /// Transitions from one color to another
     /// </summary>
-    /// <param name="Object">The object this Component is attached to</param>
-    public void ChangeColor (GameObject Object)
+    /// <param name="_object">The object this Component is attached to</param>
+    public void ChangeColor (GameObject _object)
     {
-        Renderer Ren = Object.GetComponent<Renderer> ();
-        Material Mat = Ren.sharedMaterial;
-        Mat.color = Color.Lerp (MaterialColor, ChangeToColor, ColorTransitionValue);
+        Renderer ren = _object.GetComponent<Renderer> ();
+        Material mat = ren.sharedMaterial;
+        mat.color = Color.Lerp (materialColor, changeToColor, colorTransitionValue);
     }
     #endregion
 }
